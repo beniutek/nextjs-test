@@ -1,6 +1,9 @@
 // /src/pages/menu/index.js
-import MenuGrid from '../../components/MenuGrid';
-import MenuList from '../../components/MenuList';
+import { useState } from 'react';
+import MenuGrid from '@/components/MenuGrid';
+import MenuList from '@/components/MenuList';
+import ToggleButton from '@mui/material/ToggleButton';
+import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 
 // This is mock data for the purpose of this example.
 // You may replace this with actual data in your project.
@@ -26,13 +29,32 @@ export default function MenuPage(props) {
     // You can choose to render either the MenuGrid or the MenuList, depending on your design.
     // Here we are rendering both just to illustrate, but in a real application you'd likely choose one or the other.
     console.log('props ? ', props);
+    const [view, setView] = useState('list');
+
+    const handleViewChange = (event, newView) => {
+        setView(newView);
+    };
+
     return (
         <div>
             <h1>Our Menu</h1>
-            <h2>List View</h2>
-            <MenuList menuItems={props.menu.items} />
-            <h2>Grid View</h2>
-            <MenuGrid menuItems={props.menu.items} />
+            <ToggleButtonGroup
+                value={view}
+                exclusive
+                onChange={handleViewChange}
+            >
+                <ToggleButton value="list">
+                    List
+                </ToggleButton>
+                <ToggleButton value="grid">
+                    Grid
+                </ToggleButton>
+            </ToggleButtonGroup>
+            {view === 'list' ? (
+                <MenuList menuItems={menuItems} />
+            ) : (
+                <MenuGrid menuItems={menuItems} />
+            )}
         </div>
     );
 }

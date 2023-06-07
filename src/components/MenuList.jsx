@@ -1,15 +1,14 @@
-// /src/components/MenuList.js
+import { List } from '@mui/material';
 import MenuItem from './MenuItem';
 
 function MenuList({ menuItems }) {
+    console.log("MenuList got menuItems: ", menuItems);
     return (
-        <ul>
-            {menuItems.map(item => (
-                <li key={item.id}>
-                    <MenuItem item={item} />
-                </li>
+        <List>
+            {menuItems.map((item, i) => (
+              <MenuItem item={item} key={i} />
             ))}
-        </ul>
+        </List>
     );
 }
 
