@@ -3,6 +3,7 @@ import Link from 'next/link';
 
 import { ListItem, ListItemText, ListItemAvatar, Avatar, Typography } from '@mui/material';
 import { styled } from '@mui/system';
+import { MenuItemProps } from '@/types'
 
 const StyledListItem = styled(ListItem)(({ theme }) => ({
   display: 'flex',
@@ -13,20 +14,11 @@ const StyledAvatar = styled(Avatar)(({ theme }) => ({
   marginRight: theme.spacing(2),
 }));
 
-interface ItemProps {
-  id: string;
-  name: string;
-  description: string;
-  image: string;
-  price: number;
+interface ListMenuItemProps {
+  item: MenuItemProps;
 }
 
-interface MenuItemProps {
-  item: ItemProps;
-}
-
-const MenuItem: React.FC<MenuItemProps> = ({ item }) => {
-  console.log("got props ? ", item);
+const ListMenuItem: React.FC<ListMenuItemProps> = ({ item }) => {
   return (
     <StyledListItem>
       <ListItemAvatar>
@@ -51,4 +43,4 @@ const MenuItem: React.FC<MenuItemProps> = ({ item }) => {
   );
 }
 
-export default MenuItem;
+export default ListMenuItem;

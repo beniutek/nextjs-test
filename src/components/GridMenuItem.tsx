@@ -1,3 +1,4 @@
+// Importing necessary libraries and types
 import * as React from 'react';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
@@ -7,7 +8,13 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Link from 'next/link';
 
-export default function MediaCard({ item }) {
+import { MenuItemProps } from '@/types/menu';
+
+interface MediaCardProps {
+  item: MenuItemProps;
+}
+
+const GridMenuItem: React.FC<MediaCardProps> = ({ item }) => {
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
@@ -30,3 +37,5 @@ export default function MediaCard({ item }) {
     </Card>
   );
 }
+
+export default GridMenuItem;
