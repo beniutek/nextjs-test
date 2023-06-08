@@ -1,31 +1,9 @@
-// /src/components/MenuItem.js
 import Image from 'next/image';
 import Link from 'next/link';
 
-// function MenuItem({ item }) {
-//     return (
-//         <Link href={`/menu/${item.id}`}>
-//           <div>
-//               <Image
-//                   src={item.image}
-//                   alt={item.name}
-//                   width={500}
-//                   height={300}
-//               />
-//               <h2>{item.name}</h2>
-//               <p>{item.description}</p>
-//               <p>{`Price: $${item.price.toFixed(2)}`}</p>
-//           </div>
-//         </Link>
-//     );
-// }
-
-// export default MenuItem;
-// /src/components/MenuItem.js
 import { ListItem, ListItemText, ListItemAvatar, Avatar, Typography } from '@mui/material';
 import { styled } from '@mui/system';
 
-// Create a styled component for the styles
 const StyledListItem = styled(ListItem)(({ theme }) => ({
   display: 'flex',
   justifyContent: 'space-between',
@@ -35,7 +13,19 @@ const StyledAvatar = styled(Avatar)(({ theme }) => ({
   marginRight: theme.spacing(2),
 }));
 
-function MenuItem({ item }) {
+interface ItemProps {
+  id: string;
+  name: string;
+  description: string;
+  image: string;
+  price: number;
+}
+
+interface MenuItemProps {
+  item: ItemProps;
+}
+
+const MenuItem: React.FC<MenuItemProps> = ({ item }) => {
   console.log("got props ? ", item);
   return (
     <StyledListItem>
