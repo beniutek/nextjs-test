@@ -1,6 +1,12 @@
+// Importing necessary libraries and types
+import { MenuItemProps } from '@/types/menu';
 import GridMenuItem from './GridMenuItem';
 
-function MenuGrid({ menuItems }) {
+interface MenuGridProps {
+  menuItems: MenuItemProps[];
+}
+
+const MenuGrid: React.FC<MenuGridProps> = ({ menuItems }) => {
     return (
         <div style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'center'}}>
             {menuItems.map(item => (

@@ -3,6 +3,8 @@ import MenuGrid from '@/components/MenuGrid';
 import MenuList from '@/components/MenuList';
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
+import Box from '@mui/material/Box';
+import { styled } from '@mui/system';
 
 import { GetStaticProps } from 'next';
 
@@ -17,6 +19,50 @@ interface ItemProps {
 interface MenuProps {
   menuItems: ItemProps[];
 }
+
+
+const Heading = styled('h1')({
+  display: 'flex',
+  justifyContent: 'space-between',
+});
+
+
+const MenuPage: React.FC<MenuProps> = (props) => {
+  const [view, setView] = useState<string>('list');
+
+  const handleViewChange = (event: ChangeEvent<{}>, newView: string | null) => {
+    if(newView !== null){
+      setView(newView);
+    }
+  };
+
+  return (
+    <Box sx={{ display: 'grid' }}>
+      <Heading>Our Menu</Heading>
+      <ToggleButtonGroup
+        value={view}
+        exclusive
+        onChange={handleViewChange}
+      >
+        <ToggleButton value="list">
+          List
+        </ToggleButton>
+        <ToggleButton value="grid">
+          Grid
+        </ToggleButton>
+      </ToggleButtonGroup>
+      {
+        view === 'list' ? (
+          <MenuList menuItems={props.menuItems} />
+        ) : (
+          <MenuGrid menuItems={props.menuItems} />
+        )
+      }
+    </Box>
+  );
+}
+
+export default MenuPage;
 
 const menuItems: ItemProps[] = [
   {
@@ -35,41 +81,6 @@ const menuItems: ItemProps[] = [
   },
   // add more items as necessary...
 ];
-
-const MenuPage: React.FC<MenuProps> = (props) => {
-  const [view, setView] = useState<string>('list');
-
-  const handleViewChange = (event: ChangeEvent<{}>, newView: string | null) => {
-    if(newView !== null){
-      setView(newView);
-    }
-  };
-
-  return (
-    <div>
-      <h1>Our Menu</h1>
-      <ToggleButtonGroup
-        value={view}
-        exclusive
-        onChange={handleViewChange}
-      >
-        <ToggleButton value="list">
-          List
-        </ToggleButton>
-        <ToggleButton value="grid">
-          Grid
-        </ToggleButton>
-      </ToggleButtonGroup>
-      {view === 'list' ? (
-        <MenuList menuItems={props.menuItems} />
-      ) : (
-        <MenuGrid menuItems={props.menuItems} />
-      )}
-    </div>
-  );
-}
-
-export default MenuPage;
 
 export const getStaticProps: GetStaticProps = async () => {
   const menu = await Promise.resolve({

@@ -1,5 +1,6 @@
 // /src/components/MenuList.js
-import MenuItemComponent from '@/components/MenuItem';
+import { useRouter } from 'next/router';
+import MenuItemComponent from '@/components/GridMenuItem';
 
 const x = {
   id: '2',
@@ -10,6 +11,12 @@ const x = {
 };
 
 export default function MenuItem(props) {
+  const router = useRouter();
+
+  // This will be the value of `[menuItem]` from the URL
+  const { query } = router.query;
+
+  console.log("GOT MENUBITEM query: ", router.query);
   return (
     <MenuItemComponent item={x} />
   );
