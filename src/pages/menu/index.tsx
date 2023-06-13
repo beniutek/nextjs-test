@@ -5,19 +5,11 @@ import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import Box from '@mui/material/Box';
 import { styled } from '@mui/system';
-
+import { MenuItemProps } from '@/types';
 import { GetStaticProps } from 'next';
 
-interface ItemProps {
-  id: string;
-  name: string;
-  description: string;
-  image: string;
-  price: number;
-}
-
 interface MenuProps {
-  menuItems: ItemProps[];
+  menuItems: MenuItemProps[];
 }
 
 
@@ -34,6 +26,10 @@ const MenuPage: React.FC<MenuProps> = (props) => {
     if(newView !== null){
       setView(newView);
     }
+  };
+
+  const addToOrder = (item: MenuItemProps) => {
+    console.log('item added!', item);
   };
 
   return (
@@ -53,7 +49,7 @@ const MenuPage: React.FC<MenuProps> = (props) => {
       </ToggleButtonGroup>
       {
         view === 'list' ? (
-          <MenuList menuItems={props.menuItems} />
+          <MenuList menuItems={props.menuItems} addToOrder={addToOrder} />
         ) : (
           <MenuGrid menuItems={props.menuItems} />
         )
@@ -64,7 +60,7 @@ const MenuPage: React.FC<MenuProps> = (props) => {
 
 export default MenuPage;
 
-const menuItems: ItemProps[] = [
+const menuItems: MenuItemProps[] = [
   {
     id: '1',
     name: 'Chicken Burger',
@@ -79,6 +75,13 @@ const menuItems: ItemProps[] = [
     image: '/images/menu-items/veggie-pizza.png',
     price: 14.99
   },
+  {
+    id: '3',
+    name: 'Meat Pizza',
+    description: 'With melty mozzarella cheese, seasoned ground beef and the sweet taste of caramelized onions',
+    image: '/images/menu-items/meat-pizza.png',
+    price: 16.99
+  }
   // add more items as necessary...
 ];
 

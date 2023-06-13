@@ -1,24 +1,18 @@
-// /src/components/MenuList.tsx
 import { List } from '@mui/material';
 import ListMenuItem from './ListMenuItem';
-
-interface ItemProps {
-  id: string;
-  name: string;
-  description: string;
-  image: string;
-  price: number;
-}
+import { MenuItemProps } from '@/types';
 
 interface MenuListProps {
-  menuItems: ItemProps[];
+  menuItems: MenuItemProps[];
+  addToOrder: (item: MenuItemProps) => void;
 }
 
-const MenuList: React.FC<MenuListProps> = ({ menuItems }) => {
+const MenuList: React.FC<MenuListProps> = ({ menuItems, addToOrder }) => {
+
   return (
     <List>
       {menuItems.map((item, i) => (
-        <ListMenuItem item={item} key={i} />
+        <ListMenuItem item={item} addToOrder={addToOrder} key={i} />
       ))}
     </List>
   );

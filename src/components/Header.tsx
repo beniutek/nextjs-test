@@ -1,10 +1,52 @@
+// Header.tsx
+import { useState } from 'react';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import MenuIcon from '@mui/icons-material/Menu';
 import { styled } from '@mui/system';
 
-const Header = styled('header')(({ theme }) => ({
-  // Style your header here
-  padding: theme.spacing(2),
+import DrawerComponent from './Drawer';
+
+const StyledAppBar = styled(AppBar)(({ theme }) => ({
   backgroundColor: theme.palette.primary.main,
-  color: '#fff',
 }));
 
-export default Header;
+const StyledToolbar = styled(Toolbar)(({ theme }) => ({
+  display: 'flex',
+  justifyContent: 'space-between',
+}));
+
+export default function Header() {
+  const [drawerOpen, setDrawerOpen] = useState(false);
+
+  const toggleDrawer = (open) => (event) => {
+    if (
+      event.type === 'keydown' &&
+      (event.key === 'Tab' || event.key === 'Shift')
+    ) {
+      return;
+    }
+    setDrawerOpen(open);
+  };
+
+  return (
+    <StyledAppBar position="static">
+      <StyledToolbar>
+        <Typography variant="h6">
+          Nova Resto
+        </Typography>
+        <IconButton
+          edge="start"
+          color="inherit"
+          aria-label="menu"
+          onClick={toggleDrawer(true)}
+        >
+          <MenuIcon />
+        </IconButton>
+      </StyledToolbar>
+      <DrawerComponent open={drawerOpen} toggleDrawer={toggleDrawer} />
+    </StyledAppBar>
+  );
+}
