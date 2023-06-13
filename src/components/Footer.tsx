@@ -3,8 +3,8 @@ import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
-import RestoreIcon from '@mui/icons-material/Restore';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import Face6Icon from '@mui/icons-material/Face6';
 import RestaurantMenuIcon from '@mui/icons-material/RestaurantMenu';
 import Badge from '@mui/material/Badge';
 
@@ -20,10 +20,9 @@ export default function SimpleBottomNavigation() {
           setValue(newValue);
         }}
       >
-        <BottomNavigationAction label="Recents" icon={<RestoreIcon />} />
-        <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
+        <BottomNavigationAction label="Wezwij kelnera" icon={<Face6Icon />} />
         <BottomNavigationAction
-          label="Order"
+          label="Twoje zamówienie"
           icon={
             <Badge badgeContent={4} color="error">
               <RestaurantMenuIcon />
