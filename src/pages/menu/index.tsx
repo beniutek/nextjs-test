@@ -33,8 +33,8 @@ const MenuPage: React.FC<MenuProps> = (props) => {
   };
 
   return (
-    <Box sx={{ display: 'grid' }}>
-      <Heading>Our Menu</Heading>
+    <Box>
+      <Heading>Menu</Heading>
       <ToggleButtonGroup
         value={view}
         exclusive

@@ -14,7 +14,7 @@ const AddToCartButton = styled(IconButton)(({ theme }) => ({
 }));
 
 const ListMenuItem: React.FC<ListMenuItemProps> = ({ item, addToOrder }) => {
-  const truncatedDescription = item.description.length > 60 ? item.description.substr(0, 60) + "..." : item.description;
+  const truncatedDescription = item.description.length > 60 ? item.description.substring(0, 60) + "..." : item.description;
 
   return (
     <ListItem>

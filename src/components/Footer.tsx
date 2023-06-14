@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useRouter } from 'next/router'
 import Paper from '@mui/material/Paper';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
@@ -8,8 +9,16 @@ import RestaurantMenuIcon from '@mui/icons-material/RestaurantMenu';
 import Badge from '@mui/material/Badge';
 import Link from 'next/link';
 
+const pathToNavigationAction = {
+  '/service': 0,
+  '/menu': 1,
+  '/order': 2
+};
+
 export default function SimpleBottomNavigation() {
-  const [value, setValue] = React.useState(0);
+  const router = useRouter()
+  const initialValue = pathToNavigationAction[router.asPath] || 0
+  const [value, setValue] = React.useState(initialValue);
 
   return (
     <Paper sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }} elevation={3}>
