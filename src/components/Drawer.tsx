@@ -31,7 +31,7 @@ const DrawerComponent = ({open, toggleDrawer}) => {
 
   return (
       <StyledDrawer
-        anchor="left"
+        anchor="right"
         open={open}
         onClose={toggleDrawer(false)}
       >

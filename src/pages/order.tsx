@@ -23,7 +23,7 @@ export default function OrderPage() {
   return (
     <Container>
       <Typography variant="h4" gutterBottom>
-        Your Order
+        Twoje zamówienie
       </Typography>
       <OrderList items={items} />
       <OrderSummary total={total} onConfirm={handleConfirm} />
