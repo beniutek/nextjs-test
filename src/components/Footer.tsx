@@ -1,12 +1,11 @@
 import * as React from 'react';
 import Paper from '@mui/material/Paper';
-import Box from '@mui/material/Box';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
-import FavoriteIcon from '@mui/icons-material/Favorite';
 import Face6Icon from '@mui/icons-material/Face6';
 import RestaurantMenuIcon from '@mui/icons-material/RestaurantMenu';
 import Badge from '@mui/material/Badge';
+import Link from 'next/link';
 
 export default function SimpleBottomNavigation() {
   const [value, setValue] = React.useState(0);
@@ -20,8 +19,15 @@ export default function SimpleBottomNavigation() {
           setValue(newValue);
         }}
       >
-        <BottomNavigationAction label="Wezwij kelnera" icon={<Face6Icon />} />
         <BottomNavigationAction
+          component={Link}
+          href="/service"
+          label="Wezwij kelnera"
+          icon={<Face6Icon />}
+        />
+        <BottomNavigationAction
+          component={Link}
+          href="/order"
           label="Twoje zamówienie"
           icon={
             <Badge badgeContent={4} color="error">
