@@ -8,6 +8,7 @@ import MenuBookIcon from '@mui/icons-material/MenuBook';
 import RestaurantMenuIcon from '@mui/icons-material/RestaurantMenu';
 import Badge from '@mui/material/Badge';
 import Link from 'next/link';
+import { useOrder } from '@/context/order.context';
 
 const pathToNavigationAction = {
   '/service': 0,
@@ -17,6 +18,7 @@ const pathToNavigationAction = {
 
 export default function SimpleBottomNavigation() {
   const router = useRouter()
+  const { items } = useOrder();
   const initialValue = pathToNavigationAction[router.asPath] || 0
   const [value, setValue] = React.useState(initialValue);
 
@@ -46,7 +48,7 @@ export default function SimpleBottomNavigation() {
           href="/order"
           label="Koszyk"
           icon={
-            <Badge badgeContent={4} color="error">
+            <Badge badgeContent={items.length} color="error">
               <RestaurantMenuIcon />
             </Badge>
           }

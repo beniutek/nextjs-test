@@ -3,12 +3,8 @@
 import { Grid, ListItem, ListItemText, ListItemAvatar, Avatar, Typography, IconButton } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import { styled } from '@mui/system';
-import { ListMenuItemProps } from '@/types'
+import { MenuItemProps } from '@/types'
 import { useOrder } from '@/context/order.context';
-
-const StyledAvatar = styled(Avatar)(({ theme }) => ({
-  marginRight: theme.spacing(2),
-}));
 
 const AddToCartButton = styled(IconButton)(({ theme }) => ({
   backgroundColor: theme.palette.primary.main,
@@ -16,20 +12,13 @@ const AddToCartButton = styled(IconButton)(({ theme }) => ({
   borderRadius: '50%',
 }));
 
-const ListMenuItem: React.FC<ListMenuItemProps> = ({ item, addToOrder: addToOrder2 }) => {
+const ListMenuItem: React.FC<MenuItemProps> = (item) => {
   const { addToOrder } = useOrder();
   const truncatedDescription = item.description.length > 60 ? item.description.substring(0, 60) + "..." : item.description;
 
   return (
     <ListItem>
       <Grid container direction="row" justifyContent="space-between" alignItems="center">
-        {/* Image */}
-        {/* <Grid item xs={3}>
-          <ListItemAvatar>
-            <StyledAvatar variant="square" alt={item.name} src={item.image} />
-          </ListItemAvatar>
-        </Grid> */}
-
         {/* Text */}
         <Grid item xs={8}>
           <ListItemText

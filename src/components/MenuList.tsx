@@ -4,15 +4,14 @@ import { MenuItemProps } from '@/types';
 
 interface MenuListProps {
   menuItems: MenuItemProps[];
-  addToOrder: (item: MenuItemProps) => void;
 }
 
-const MenuList: React.FC<MenuListProps> = ({ menuItems, addToOrder }) => {
+const MenuList: React.FC<MenuListProps> = ({ menuItems }) => {
 
   return (
     <List>
       {menuItems.map((item, i) => (
-        <ListMenuItem item={item} addToOrder={addToOrder} key={i} />
+        <ListMenuItem { ...item } key={i} />
       ))}
     </List>
   );

@@ -4,9 +4,11 @@ import { useState, useEffect } from 'react';
 import { Container, Typography } from '@mui/material';
 import OrderList from '@/components/OrderList';
 import OrderSummary from '@/components/OrderSummary';
+import { useOrder } from '@/context/order.context';
 
 export default function OrderPage() {
-  const [items, setItems] = useState([]); // initialize with the items passed via props
+  const { items } = useOrder(); // Use context to access the order
+
   const [total, setTotal] = useState(0);
 
   // calculating the total

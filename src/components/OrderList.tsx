@@ -1,28 +1,31 @@
-// /components/OrderList.tsx
+import { Item } from '@/context/order.context';
+import { List, ListItem, Typography, Grid } from '@mui/material';
 
-import { List, ListItem, ListItemText, Typography } from '@mui/material';
-
-interface OrderItemProps {
-  id: string;
+interface OrderItem {
   name: string;
   price: number;
 }
-
 interface OrderListProps {
-  items: OrderItemProps[];
+  items: Item[];
 }
 
-const OrderList: React.FC<OrderListProps> = ({ items }) => (
-  <List>
-    {items.map((item) => (
-      <ListItem key={item.id}>
-        <ListItemText
-          primary={item.name}
-          secondary={<Typography variant="body2">{`$${item.price.toFixed(2)}`}</Typography>}
-        />
-      </ListItem>
-    ))}
-  </List>
-);
+const OrderList: React.FC<OrderListProps> = ({ items }) => {
+  return (
+    <List>
+      {items.map((item, index) => (
+        <ListItem key={index}>
+          <Grid container justifyContent="space-between">
+            <Grid item>
+              <Typography variant="body1">{item.name}</Typography>
+            </Grid>
+            <Grid item>
+              <Typography variant="body1">${item.price.toFixed(2)}</Typography>
+            </Grid>
+          </Grid>
+        </ListItem>
+      ))}
+    </List>
+  );
+};
 
 export default OrderList;

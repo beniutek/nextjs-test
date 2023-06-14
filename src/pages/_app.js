@@ -24,11 +24,11 @@ export default function MyApp(props) {
       <ThemeProvider theme={theme}>
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
-        <Header>Header goes here...</Header>
         <Providers>
+          <Header />
           <Component {...pageProps} />
+          <Footer />
         </Providers>
-        <Footer>Footer goes here...</Footer>
       </ThemeProvider>
     </CacheProvider>
   );

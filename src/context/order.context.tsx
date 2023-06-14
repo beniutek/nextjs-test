@@ -1,38 +1,40 @@
 // orderContext.tsx
+import { MenuItemProps } from '@/types';
 import { createContext, useState, useContext, ReactNode } from 'react';
 
 // Define the shape of the item object
 interface Item {
+  id: string;
   name: string;
-  description: string;
   price: number;
-  // Add other fields as required...
 }
 
 // Define the shape of the context
 interface OrderContextShape {
-  order: Item[];
-  addToOrder: (item: Item) => void;
+  items: Item[];
+  addToOrder: (item: MenuItemProps) => void;
 }
-
-// Initial state
-const initialState: Item[] = [];
 
 // Create context
 export const OrderContext = createContext<OrderContextShape | undefined>(undefined);
 
 // Provider component
 export function OrderProvider({ children }: { children: ReactNode }) {
-  const [order, setOrder] = useState<Item[]>(initialState);
+  const [items, setItems] = useState<Item[]>([]);
 
-  const addToOrder = (item: Item) => {
-    console.log("adding item to order: ", item);
-    setOrder(currentOrder => [...currentOrder, item]);
-  };
+  const addToOrder = (item: MenuItemProps) => {
+    const orderItem: Item = {
+      id: item.id,
+      name: item.name,
+      price: item.price,
+    };
+
+    setItems(currentItems => [...currentItems, orderItem]);
+  }
 
   const value = {
-    order,
-    addToOrder
+    items,
+    addToOrder,
   };
 
   return <OrderContext.Provider value={value}>{children}</OrderContext.Provider>;
@@ -41,8 +43,10 @@ export function OrderProvider({ children }: { children: ReactNode }) {
 // Hook for easy usage of the context
 export function useOrder() {
   const context = useContext(OrderContext);
+
   if (context === undefined) {
     throw new Error('useOrder must be used within a OrderProvider');
   }
+
   return context;
 }

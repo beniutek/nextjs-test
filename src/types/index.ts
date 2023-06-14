@@ -5,8 +5,3 @@ export interface MenuItemProps {
   image: string;
   price: number;
 }
-
-export interface ListMenuItemProps {
-  item: MenuItemProps;
-  addToOrder: (item: MenuItemProps) => void;
-}

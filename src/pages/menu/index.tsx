@@ -28,10 +28,6 @@ const MenuPage: React.FC<MenuProps> = (props) => {
     }
   };
 
-  const addToOrder = (item: MenuItemProps) => {
-    console.log('item added!', item);
-  };
-
   return (
     <Box>
       <Heading>Menu</Heading>
@@ -49,7 +45,7 @@ const MenuPage: React.FC<MenuProps> = (props) => {
       </ToggleButtonGroup>
       {
         view === 'list' ? (
-          <MenuList menuItems={props.menuItems} addToOrder={addToOrder} />
+          <MenuList menuItems={props.menuItems} />
         ) : (
           <MenuGrid menuItems={props.menuItems} />
         )
