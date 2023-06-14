@@ -37,7 +37,7 @@ const DrawerComponent = ({open, toggleDrawer}) => {
         onKeyDown={toggleDrawer(false)}
       >
         <List sx={{ marginTop: 8 }}>
-          <ListItem component={Link} href="/about_us">
+          <ListItem component={Link} href="/about" sx={{ color: 'inherit', textDecoration: 'none' }}>
             <ListItemText primary="O nas" />
           </ListItem>
         </List>
