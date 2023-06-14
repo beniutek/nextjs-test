@@ -3,6 +3,7 @@ import Paper from '@mui/material/Paper';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import Face6Icon from '@mui/icons-material/Face6';
+import MenuBookIcon from '@mui/icons-material/MenuBook';
 import RestaurantMenuIcon from '@mui/icons-material/RestaurantMenu';
 import Badge from '@mui/material/Badge';
 import Link from 'next/link';
@@ -15,7 +16,7 @@ export default function SimpleBottomNavigation() {
       <BottomNavigation
         showLabels
         value={value}
-        onChange={(event, newValue) => {
+        onChange={(_event, newValue) => {
           setValue(newValue);
         }}
       >
@@ -27,8 +28,14 @@ export default function SimpleBottomNavigation() {
         />
         <BottomNavigationAction
           component={Link}
+          href="/menu"
+          label="Menu"
+          icon={<MenuBookIcon />}
+        />
+        <BottomNavigationAction
+          component={Link}
           href="/order"
-          label="Twoje zamówienie"
+          label="Koszyk"
           icon={
             <Badge badgeContent={4} color="error">
               <RestaurantMenuIcon />
