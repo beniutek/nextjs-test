@@ -12,30 +12,25 @@ const StyledDrawer = styled(Drawer)(({ theme }) => ({
 }));
 
 const DrawerComponent = ({open, toggleDrawer}) => {
-
-  const list = () => (
-    <Box
-      sx={{ width: 250 }}
-      role="presentation"
-      onClick={toggleDrawer(false)}
-      onKeyDown={toggleDrawer(false)}
-    >
-      <List>
-        {/* Pass your drawer list items here */}
-        <ListItem button>
-          <ListItemText primary={'Drawer Item'} />
-        </ListItem>
-      </List>
-    </Box>
-  );
-
   return (
       <StyledDrawer
         anchor="right"
         open={open}
         onClose={toggleDrawer(false)}
       >
-        {list()}
+        <Box
+          sx={{ width: 250 }}
+          role="presentation"
+          onClick={toggleDrawer(false)}
+          onKeyDown={toggleDrawer(false)}
+        >
+          <List>
+            {/* Pass your drawer list items here */}
+            <ListItem button>
+              <ListItemText primary={'Drawer Item'} />
+            </ListItem>
+          </List>
+        </Box>
       </StyledDrawer>
   );
 }
