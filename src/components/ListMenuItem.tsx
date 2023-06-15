@@ -1,6 +1,6 @@
 'use client';
 
-import { Grid, ListItem, ListItemText, ListItemAvatar, Avatar, Typography, IconButton } from '@mui/material';
+import { Grid, ListItem, ListItemText, ListItemAvatar, Avatar, Typography, IconButton, Button } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import { styled } from '@mui/system';
 import { MenuItemProps } from '@/types'
@@ -44,9 +44,9 @@ const ListMenuItem: React.FC<MenuItemProps> = (item) => {
 
         {/* Button */}
         <Grid item xs justifyContent="center" display="flex">
-          <AddToCartButton onClick={() => addToOrder(item)} size="small" >
+          <IconButton onClick={() => addToOrder(item)} color="success" size="large">
             <AddIcon />
-          </AddToCartButton>
+          </IconButton>
         </Grid>
       </Grid>
     </ListItem>
