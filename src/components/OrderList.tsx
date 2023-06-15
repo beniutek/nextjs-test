@@ -1,10 +1,6 @@
 import { Item } from '@/context/order.context';
 import { List, ListItem, Typography, Grid } from '@mui/material';
 
-interface OrderItem {
-  name: string;
-  price: number;
-}
 interface OrderListProps {
   items: Item[];
 }

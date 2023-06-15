@@ -7,6 +7,7 @@ import Box from '@mui/material/Box';
 import { styled } from '@mui/system';
 import { MenuItemProps } from '@/types';
 import { GetStaticProps } from 'next';
+import { useMenu } from '@/context/menu.context';
 
 interface MenuProps {
   menuItems: MenuItemProps[];
@@ -20,29 +21,11 @@ const Heading = styled('h1')({
 
 
 const MenuPage: React.FC<MenuProps> = (props) => {
-  const [view, setView] = useState<string>('list');
-
-  const handleViewChange = (event: ChangeEvent<{}>, newView: string | null) => {
-    if(newView !== null){
-      setView(newView);
-    }
-  };
+  const { view } = useMenu();
 
   return (
     <Box>
       <Heading>Menu</Heading>
-      <ToggleButtonGroup
-        value={view}
-        exclusive
-        onChange={handleViewChange}
-      >
-        <ToggleButton value="list">
-          List
-        </ToggleButton>
-        <ToggleButton value="grid">
-          Grid
-        </ToggleButton>
-      </ToggleButtonGroup>
       {
         view === 'list' ? (
           <MenuList menuItems={props.menuItems} />
