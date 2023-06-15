@@ -30,7 +30,7 @@ export default function OrderPage() {
 
   return (
     <Container>
-      <Typography variant="h4" gutterBottom>
+      <Typography variant="h4" sx={{ fontFamily: 'Abril Fatface', marginTop: '1rem' }} gutterBottom>
         Twoje zamówienie
       </Typography>
       <OrderList items={Object.values(order)} />

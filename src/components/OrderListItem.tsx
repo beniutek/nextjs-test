@@ -22,13 +22,13 @@ const OrderListItem: React.FC<OrderListItemProps> = ({ item }) => {
     <ListItem>
       <Grid container display="flex" direction="row" justifyContent="space-between" alignItems="center">
         <Grid item xs={6}>
-          <Typography variant="body1">{item.name}</Typography>
+          <Typography variant="body1" sx={{ fontFamily: 'Abril Fatface'}}>{item.name}</Typography>
         </Grid>
         <Grid item xs={2} display="flex" justifyContent="flex-end">
-          <Typography variant="body1">${item.price.toFixed(2)}</Typography>
+          <Typography variant="body1" sx={{ fontFamily: 'Abhaya Libre' }}>${item.price.toFixed(2)}</Typography>
         </Grid>
         <Grid item xs={2} display="flex" justifyContent="flex-end">
-          <Typography>{item.quantity}</Typography>
+          <Typography sx={{ fontFamily: 'Abhaya Libre' }}>{item.quantity}</Typography>
         </Grid>
         <Grid item>
           <IconButton onClick={decrementQuantity} disabled={quantity === 0} color="error">
