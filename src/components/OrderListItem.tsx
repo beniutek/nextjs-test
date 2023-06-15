@@ -20,14 +20,14 @@ const OrderListItem: React.FC<OrderListItemProps> = ({ item }) => {
 
   return (
     <ListItem>
-      <Grid container direction="row" justifyContent="space-between" alignItems="center">
-        <Grid item>
+      <Grid container display="flex" direction="row" justifyContent="space-between" alignItems="center">
+        <Grid item xs={6}>
           <Typography variant="body1">{item.name}</Typography>
         </Grid>
-        <Grid item>
+        <Grid item xs={2} display="flex" justifyContent="flex-end">
           <Typography variant="body1">${item.price.toFixed(2)}</Typography>
         </Grid>
-        <Grid item>
+        <Grid item xs={2} display="flex" justifyContent="flex-end">
           <Typography>{item.quantity}</Typography>
         </Grid>
         <Grid item>

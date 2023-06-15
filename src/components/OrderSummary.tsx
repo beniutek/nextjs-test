@@ -1,6 +1,6 @@
 // /components/OrderSummary.tsx
 
-import { Button, Typography, Box } from '@mui/material';
+import { Button, Typography, Box, Grid } from '@mui/material';
 
 interface OrderSummaryProps {
   total: number;
@@ -8,12 +8,17 @@ interface OrderSummaryProps {
 }
 
 const OrderSummary: React.FC<OrderSummaryProps> = ({ total, onConfirm }) => (
-  <Box display="flex" flexDirection="column" alignItems="center" gap={2}>
-    <Typography variant="h6">{`Total: $${total.toFixed(2)}`}</Typography>
-    <Button variant="contained" color="primary" onClick={onConfirm}>
-      Zamów
-    </Button>
-  </Box>
+  <Grid display="flex" flexDirection="column" alignItems="center" gap={2}>
+    <Grid item display="flex" justifyContent="space-between" sx={{ width: '100%' }}>
+      <Typography variant="h6" alignSelf="flex-start">{"Całość:"}</Typography>
+      <Typography variant="h6" alignSelf="flex-end">{total.toFixed(2)}</Typography>
+    </Grid>
+    <Grid item>
+      <Button variant="contained" color="primary" onClick={onConfirm}>
+        Zamów
+      </Button>
+    </Grid>
+  </Grid>
 );
 
 export default OrderSummary;

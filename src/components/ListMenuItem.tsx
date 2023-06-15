@@ -1,16 +1,9 @@
 'use client';
 
-import { Grid, ListItem, ListItemText, ListItemAvatar, Avatar, Typography, IconButton, Button } from '@mui/material';
+import { Grid, ListItem, ListItemText, Typography, IconButton } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
-import { styled } from '@mui/system';
 import { MenuItemProps } from '@/types'
 import { useOrder } from '@/context/order.context';
-
-const AddToCartButton = styled(IconButton)(({ theme }) => ({
-  backgroundColor: theme.palette.primary.main,
-  color: '#fff',
-  borderRadius: '50%',
-}));
 
 const ListMenuItem: React.FC<MenuItemProps> = (item) => {
   const { addToOrder } = useOrder();

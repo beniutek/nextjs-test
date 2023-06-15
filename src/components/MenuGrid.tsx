@@ -1,6 +1,7 @@
 // Importing necessary libraries and types
-import { MenuItemProps } from '@/types/menu';
+import { MenuItemProps } from '@/types';
 import GridMenuItem from './GridMenuItem';
+import { Box } from '@mui/material';
 
 interface MenuGridProps {
   menuItems: MenuItemProps[];
@@ -8,13 +9,11 @@ interface MenuGridProps {
 
 const MenuGrid: React.FC<MenuGridProps> = ({ menuItems }) => {
     return (
-        <div style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'center'}}>
+        <Box sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', "&:last-child": { marginBottom: '50px' }}}>
             {menuItems.map(item => (
-                <div key={item.id} style={{margin: '1em'}}>
-                    <GridMenuItem item={item} />
-                </div>
+              <GridMenuItem item={item} />
             ))}
-        </div>
+        </Box>
     );
 }
 

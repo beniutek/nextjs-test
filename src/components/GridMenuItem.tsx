@@ -31,7 +31,7 @@ const GridMenuItem: React.FC<MediaCardProps> = ({ item }) => {
   };
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 345, margin: '1rem' }}>
       <CardMedia
         sx={{ height: 140 }}
         image={ item.image }

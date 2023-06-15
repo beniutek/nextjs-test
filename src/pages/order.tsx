@@ -2,9 +2,10 @@
 
 import { useState, useEffect } from 'react';
 import { Container, Typography } from '@mui/material';
+import Divider from '@mui/material/Divider';
 import OrderList from '@/components/OrderList';
 import OrderSummary from '@/components/OrderSummary';
-import { Order, OrderItem, useOrder } from '@/context/order.context';
+import { Order, useOrder } from '@/context/order.context';
 
 const calculateTotal = (order: Order): number => {
   let total = 0;
@@ -33,6 +34,7 @@ export default function OrderPage() {
         Twoje zamówienie
       </Typography>
       <OrderList items={Object.values(order)} />
+      <Divider sx={{ marginBottom: '20px' }}/>
       <OrderSummary total={totalPrice} onConfirm={handleConfirm} />
     </Container>
   );

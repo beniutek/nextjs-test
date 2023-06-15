@@ -16,7 +16,9 @@ interface MenuProps {
 
 const Heading = styled('h1')({
   display: 'flex',
-  justifyContent: 'space-between',
+  justifyContent: 'flex-start',
+  fontFamily: 'Abril Fatface',
+  margin: '1rem',
 });
 
 
