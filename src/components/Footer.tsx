@@ -10,12 +10,21 @@ import GridViewIcon from '@mui/icons-material/GridView';
 import ListViewIcon from '@mui/icons-material/Reorder';
 import Badge from '@mui/material/Badge';
 import Link from 'next/link';
-import { useOrder } from '@/context/order.context';
+import { Order, useOrder } from '@/context/order.context';
 import { useMenu } from '@/context/menu.context';
+
+
+const totalOrderItems = (order: Order) => {
+  let totalItems = 0;
+    for (const key in order) {
+      totalItems += order[key].quantity;
+    }
+  return totalItems;
+};
 
 export default function SimpleBottomNavigation() {
   const router = useRouter()
-  const { items } = useOrder();
+  const { order } = useOrder();
   const { handleViewChange } = useMenu();
   const initialValue = router.asPath === '/menu' ? 'list' : router.asPath;
   const [value, setValue] = React.useState(initialValue);
@@ -90,7 +99,7 @@ export default function SimpleBottomNavigation() {
             padding: 0
           }}
           icon={
-            <Badge badgeContent={items.length} color="error">
+            <Badge badgeContent={totalOrderItems(order)} color="error">
               <RestaurantMenuIcon />
             </Badge>
           }

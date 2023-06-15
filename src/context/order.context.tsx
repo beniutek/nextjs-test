@@ -2,18 +2,17 @@
 import { MenuItemProps } from '@/types';
 import { createContext, useState, useContext, ReactNode } from 'react';
 
-// Define the shape of the item object
-export interface Item {
-  id: string;
-  name: string;
-  price: number;
+export interface OrderItem extends MenuItemProps {
+  quantity: number;
 }
+
+export type Order = Record<string, OrderItem>;
 
 // Define the shape of the context
 interface OrderContextShape {
-  items: Item[];
+  order: Order;
   addToOrder: (item: MenuItemProps) => void;
-  removeFromOrder: (item: MenuItemProps) => void;
+  removeFromOrder: (itemId: string) => void;
 }
 
 // Create context
@@ -21,31 +20,45 @@ export const OrderContext = createContext<OrderContextShape | undefined>(undefin
 
 // Provider component
 export function OrderProvider({ children }: { children: ReactNode }) {
-  const [items, setItems] = useState<Item[]>([]);
+  const [order, setOrder] = useState<Order>({});
 
-  const addToOrder = (item: MenuItemProps) => {
-    const orderItem: Item = {
-      id: item.id,
-      name: item.name,
-      price: item.price,
-    };
-
-    setItems(currentItems => [...currentItems, orderItem]);
-  }
-
-  const removeFromOrder= (itemToRemove: Item): void => {
-    setItems(items => {
-      const index = items.findIndex((item) => item.id === itemToRemove.id)
-      if (index === -1) {
-        return items;
+  const addToOrder = (item: MenuItemProps): void => {
+    setOrder(currentOrder => {
+      const existingItem = currentOrder[item.id];
+      if (existingItem) {
+        return {
+          ...order,
+          [item.id]: { ...existingItem, quantity: existingItem.quantity + 1 }
+        };
       } else {
-        return [...items.slice(0, index), ...items.slice(index + 1)]
+        return {
+          ...order,
+          [item.id]: { ...item, quantity: 1 }
+        };
       }
-    });
+    })
   }
 
+  const removeFromOrder = (itemId: string): void => {
+    setOrder(currentOrder => {
+      const existingItem = currentOrder[itemId];
+      if (!existingItem) {
+        return order;
+      }
+
+      if (existingItem.quantity > 1) {
+        return {
+          ...order,
+          [itemId]: { ...existingItem, quantity: existingItem.quantity - 1 }
+        };
+      } else {
+        const { [itemId]: removed, ...newOrder } = order;
+        return newOrder;
+      }
+    })
+  }
   const value = {
-    items,
+    order,
     addToOrder,
     removeFromOrder,
   };

@@ -16,8 +16,9 @@ interface MediaCardProps {
 }
 
 const GridMenuItem: React.FC<MediaCardProps> = ({ item }) => {
-  const { addToOrder, removeFromOrder } = useOrder();
-  const [quantity, setQuantity] = React.useState(0);
+  const { addToOrder, removeFromOrder, order } = useOrder();
+  const initialQuantity = order[item.id] ? order[item.id].quantity : 0
+  const [quantity, setQuantity] = React.useState(initialQuantity);
 
   const incrementQuantity = () => {
     setQuantity(prevQuantity => prevQuantity + 1);
@@ -26,7 +27,7 @@ const GridMenuItem: React.FC<MediaCardProps> = ({ item }) => {
 
   const decrementQuantity = () => {
     setQuantity(prevQuantity => prevQuantity > 0 ? prevQuantity - 1 : 0);
-    removeFromOrder(item);
+    removeFromOrder(item.id);
   };
 
   return (
