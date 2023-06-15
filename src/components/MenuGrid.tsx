@@ -11,7 +11,7 @@ const MenuGrid: React.FC<MenuGridProps> = ({ menuItems }) => {
     return (
         <Box sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', "&:last-child": { marginBottom: '50px' }}}>
             {menuItems.map(item => (
-              <GridMenuItem item={item} />
+              <GridMenuItem item={item} key={item.id} />
             ))}
         </Box>
     );

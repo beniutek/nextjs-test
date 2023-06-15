@@ -31,7 +31,7 @@ export default function SimpleBottomNavigation() {
 
   React.useEffect(() => {
     if (value === 'list' || value === 'grid') handleViewChange(value);
-  }, [value]);
+  }, [value, handleViewChange]);
 
   return (
     <Paper sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }} elevation={5}>

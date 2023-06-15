@@ -9,6 +9,7 @@ import ListItemText from '@mui/material/ListItemText';
 import List from '@mui/material/List';
 import InfoIcon from '@mui/icons-material/Info';
 import { styled } from '@mui/system';
+import Image from 'next/image';
 
 const StyledDrawer = styled(Drawer)(({ theme }) => ({
   width: '250px',
@@ -17,13 +18,6 @@ const StyledDrawer = styled(Drawer)(({ theme }) => ({
 }));
 
 const DrawerComponent = ({open, toggleDrawer}) => {
-  const items = [
-    { name: 'O nas', type: 'top', icon: <InfoIcon /> },
-    { name: 'English', type: 'bottom', icon: <img src="/images/flags/gb.svg" alt="English" width={24} height={24} /> },
-    { name: 'Polski', type: 'bottom', icon: <img src="/images/flags/pl.svg" alt="Polski" width={24} height={24} /> },
-    { name: 'Ukrainian', type: 'bottom', icon: <img src="/images/flags/ua.svg" alt="Ukrainian" width={24} height={24} /> },
-  ];
-
   return (
     <StyledDrawer
       anchor="right"
@@ -43,15 +37,15 @@ const DrawerComponent = ({open, toggleDrawer}) => {
         </List>
         <List>
           <ListItem>
-            <ListItemIcon><img src="/images/flags/gb.svg" alt="English" width={24} height={24} /></ListItemIcon>
+            <ListItemIcon><Image src="/images/flags/gb.svg" alt="English" width={24} height={24} /></ListItemIcon>
             <ListItemText primary="English" />
           </ListItem>
           <ListItem>
-            <ListItemIcon><img src="/images/flags/pl.svg" alt="Polski" width={24} height={24} /></ListItemIcon>
+            <ListItemIcon><Image src="/images/flags/pl.svg" alt="Polski" width={24} height={24} /></ListItemIcon>
             <ListItemText primary="Polski" />
           </ListItem>
           <ListItem>
-            <ListItemIcon><img src="/images/flags/ua.svg" alt="Український" width={24} height={24} /></ListItemIcon>
+            <ListItemIcon><Image src="/images/flags/ua.svg" alt="Український" width={24} height={24} /></ListItemIcon>
             <ListItemText primary="Український" />
           </ListItem>
         </List>
