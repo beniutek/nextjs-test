@@ -3,7 +3,7 @@ import { MenuItemProps } from '@/types';
 import { createContext, useState, useContext, ReactNode } from 'react';
 
 // Define the shape of the item object
-interface Item {
+export interface Item {
   id: string;
   name: string;
   price: number;
@@ -13,6 +13,7 @@ interface Item {
 interface OrderContextShape {
   items: Item[];
   addToOrder: (item: MenuItemProps) => void;
+  removeFromOrder: (item: MenuItemProps) => void;
 }
 
 // Create context
@@ -32,9 +33,21 @@ export function OrderProvider({ children }: { children: ReactNode }) {
     setItems(currentItems => [...currentItems, orderItem]);
   }
 
+  const removeFromOrder= (itemToRemove: Item): void => {
+    setItems(items => {
+      const index = items.findIndex((item) => item.id === itemToRemove.id)
+      if (index === -1) {
+        return items;
+      } else {
+        return [...items.slice(0, index), ...items.slice(index + 1)]
+      }
+    });
+  }
+
   const value = {
     items,
     addToOrder,
+    removeFromOrder,
   };
 
   return <OrderContext.Provider value={value}>{children}</OrderContext.Provider>;

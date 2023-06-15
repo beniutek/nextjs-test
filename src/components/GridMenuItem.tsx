@@ -1,20 +1,34 @@
-// Importing necessary libraries and types
 import * as React from 'react';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import Link from 'next/link';
-
-import { MenuItemProps } from '@/types/menu';
+import IconButton from '@mui/material/IconButton';
+import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
+import Box from '@mui/material/Box';
+import { MenuItemProps } from '@/types';
+import { useOrder } from '@/context/order.context';
 
 interface MediaCardProps {
   item: MenuItemProps;
 }
 
 const GridMenuItem: React.FC<MediaCardProps> = ({ item }) => {
+  const { addToOrder, removeFromOrder } = useOrder();
+  const [quantity, setQuantity] = React.useState(0);
+
+  const incrementQuantity = () => {
+    setQuantity(prevQuantity => prevQuantity + 1);
+    addToOrder(item);
+  };
+
+  const decrementQuantity = () => {
+    setQuantity(prevQuantity => prevQuantity > 0 ? prevQuantity - 1 : 0);
+    removeFromOrder(item);
+  };
+
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
@@ -31,8 +45,16 @@ const GridMenuItem: React.FC<MediaCardProps> = ({ item }) => {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">{`Price: $${item.price.toFixed(2)}`}</Button>
-        <Link href={`/menu/${item.id}`}>Learn more</Link>
+        <Typography>{`Price: $${item.price.toFixed(2)}`}</Typography>
+        <Box display="flex" alignItems="center" sx={{ marginLeft: 'auto' }}>
+          <IconButton onClick={decrementQuantity} disabled={quantity === 0} color="error">
+            <RemoveIcon />
+          </IconButton>
+          <Typography>{quantity}</Typography>
+          <IconButton onClick={incrementQuantity} color="success">
+            <AddIcon />
+          </IconButton>
+        </Box>
       </CardActions>
     </Card>
   );
