@@ -6,11 +6,13 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import MenuIcon from '@mui/icons-material/Menu';
 import { styled } from '@mui/system';
+import headerBackground from "/images/header.jpg";
 
 import DrawerComponent from './Drawer';
 
 const StyledAppBar = styled(AppBar)(({ theme }) => ({
   backgroundColor: theme.palette.primary.main,
+  backgroundImage: `url(/images/header.jpg)`,
 }));
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
@@ -34,7 +36,7 @@ export default function Header() {
   return (
     <StyledAppBar position="static">
       <StyledToolbar>
-        <Typography variant="h6">
+        <Typography variant="h6" sx={{ fontFamily: 'Abril Fatface'}}>
           Nova Resto
         </Typography>
         <IconButton

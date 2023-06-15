@@ -23,7 +23,11 @@ const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: roboto.style.fontFamily,
+    fontFamily: [
+      roboto.style.fontFamily,
+      'Abhaya Libre',
+      'Abril Fatface'
+    ].join(","),
   },
 });
 

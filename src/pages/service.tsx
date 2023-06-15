@@ -11,13 +11,13 @@ export default function ServicePage() {
   return (
     <Box sx={{ height: "90vh" }}>
       <Grid container xs={12} spacing={4} display="flex" flexDirection="column" justifyContent="center" alignItems="center" sx={{ height: "100%" }}>
-        <Grid xs={12} display="flex" justifyContent="center">
-          <Typography variant="h5">
+        <Grid xs display="flex" justifyContent="center" alignItems="center">
+          <Typography sx={{ fontFamily: 'Abril Fatface'}}>
             Czy chcesz wezwać obsługę?
           </Typography>
         </Grid>
-        <Grid xs={12} display="flex" justifyContent="center">
-          <Button variant="contained" color="primary" onClick={handleClick}>
+        <Grid xs display="flex" justifyContent="center" alignItems="flex-start">
+          <Button variant="contained" color="primary" onClick={handleClick} sx={{ fontFamily: 'Abhaya Libre'}}>
             Wezwij obsługę
           </Button>
         </Grid>

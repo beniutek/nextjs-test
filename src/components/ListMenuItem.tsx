@@ -24,10 +24,10 @@ const ListMenuItem: React.FC<MenuItemProps> = (item) => {
           <ListItemText
             primary={
               <div>
-                <Typography variant="body1" component="h2">
+                <Typography variant="body1" component="h2" sx={{ fontFamily: 'Abril Fatface'}}>
                   {item.name}
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
+                <Typography variant="body2" color="text.secondary" sx={{ fontFamily: 'Abhaya Libre' }}>
                   {truncatedDescription}
                 </Typography>
               </div>
@@ -37,7 +37,7 @@ const ListMenuItem: React.FC<MenuItemProps> = (item) => {
 
         {/* Price */}
         <Grid item xs justifyContent="center" display="flex">
-          <Typography variant="body1" component="h2">
+          <Typography variant="body1" component="h2" sx={{ fontFamily: 'Abril Fatface'}}>
             ${item.price.toFixed(2)}
           </Typography>
         </Grid>

@@ -38,15 +38,17 @@ const GridMenuItem: React.FC<MediaCardProps> = ({ item }) => {
         title={ item.name }
       />
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
+        <Typography gutterBottom variant="h5" component="div" sx={{ fontFamily: 'Abril Fatface' }}>
           { item.name }
         </Typography>
-        <Typography variant="body2" color="text.secondary">
+        <Typography variant="body2" color="text.secondary" sx={{ fontFamily: 'Abhaya Libre' }}>
           { item.description }
         </Typography>
       </CardContent>
-      <CardActions>
-        <Typography>{`Price: $${item.price.toFixed(2)}`}</Typography>
+      <CardActions sx={{ padding: '16px' }}>
+        <Typography sx={{ fontFamily: 'Abril Fatface'}}>
+          {`$${item.price.toFixed(2)}`}
+        </Typography>
         <Box display="flex" alignItems="center" sx={{ marginLeft: 'auto' }}>
           <IconButton onClick={decrementQuantity} disabled={quantity === 0} color="error">
             <RemoveIcon />

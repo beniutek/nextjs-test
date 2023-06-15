@@ -49,7 +49,8 @@ export default function SimpleBottomNavigation() {
           label="Wezwij kelnera"
           icon={<Face6Icon />}
           sx={{
-            padding: 0
+            padding: 0,
+            fontFamily: 'Abhaya Libre'
           }}
         />
         {
@@ -59,7 +60,8 @@ export default function SimpleBottomNavigation() {
                 value="list"
                 icon={<ListViewIcon />}
                 sx={{
-                  padding: 0
+                  padding: 0,
+                  fontFamily: 'Abhaya Libre'
                 }}
               />
           )
@@ -71,7 +73,8 @@ export default function SimpleBottomNavigation() {
                 value="grid"
                 icon={<GridViewIcon />}
                 sx={{
-                  padding: 0
+                  padding: 0,
+                  fontFamily: 'Abhaya Libre'
                 }}
               />
           )
@@ -85,7 +88,8 @@ export default function SimpleBottomNavigation() {
               value="/menu"
               icon={<MenuBookIcon />}
               sx={{
-                padding: 0
+                padding: 0,
+                fontFamily: 'Abhaya Libre'
               }}
             />
           )
@@ -96,7 +100,8 @@ export default function SimpleBottomNavigation() {
           label="Koszyk"
           value="/order"
           sx={{
-            padding: 0
+            padding: 0,
+            fontFamily: 'Abhaya Libre'
           }}
           icon={
             <Badge badgeContent={totalOrderItems(order)} color="error">
